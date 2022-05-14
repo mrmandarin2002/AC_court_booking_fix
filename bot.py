@@ -1,16 +1,19 @@
 # fuck AC
-import threading
-import time
-
-from selenium import webdriver
-from selenium.webdriver.common.by import By
-from selenium.webdriver.firefox.service import Service
-from selenium.webdriver.support import expected_conditions as EC
-from selenium.webdriver.support.ui import WebDriverWait
-from webdriver_manager.firefox import GeckoDriverManager
+import time, threading
 
 from CONSTS import *
-from SECRETS import *
+
+from selenium import webdriver
+from selenium.webdriver.support.ui import WebDriverWait
+from selenium.webdriver.common.by import By
+from selenium.webdriver.support.ui import WebDriverWait
+from selenium.webdriver.support import expected_conditions as EC
+
+from webdriver_manager.firefox import GeckoDriverManager
+from selenium.webdriver.firefox.service import Service
+
+UTORID = ""
+PASSWORD = ""
 
 class Bot:
 
@@ -27,7 +30,7 @@ class Bot:
 
         # presses "login with utorid button"
         WebDriverWait(self.driver, 10).until(
-            EC.visibility_of_element_located((By.XPATH, "//button[@class='btn btn-primary btn-block btn-external-login btn-sign-in btn-sso-shibboleth']"))
+            EC.presence_of_element_located((By.XPATH, "//button[@class='btn btn-primary btn-block btn-external-login btn-sign-in btn-sso-shibboleth']"))
         ).click()
 
         # fill username
@@ -73,7 +76,4 @@ class Bot:
             self.driver.refresh()
 
 bots = [Bot(i, []) for i in range(3)]
-
-
-
 
