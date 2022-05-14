@@ -1,2 +1,5 @@
 .DS_store
 *.log
+SECRETS.py
+__pycache__/*
+tags
