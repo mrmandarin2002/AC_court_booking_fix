@@ -77,7 +77,7 @@ class Bot:
             date_button = WebDriverWait(self.driver, 10).until(
                 EC.presence_of_element_located((By.XPATH, "//button[@class='btn btn-secondary single-date-select-button single-date-select-one-click'][2]"))
             )
-            print("Presence Time: ", time.time() - startTime) 
+            # print("Presence Time: ", time.time() - startTime) 
 
             new_date = date_button.get_attribute("data-day")
             #print(new_date)
@@ -86,7 +86,6 @@ class Bot:
                 date_button.click()
                 date = new_date
                 book_buttons = [0]
-                time.sleep(0.3)
                 
                 while len(book_buttons):
                     book_buttons = self.driver.find_elements(By.XPATH, "//button[@class='btn btn-primary']")
@@ -94,24 +93,27 @@ class Bot:
                     if self.back:
                         book_buttons.reverse()
 
-                    if book_buttons:
-                        book_buttons[min(self.skip, len(book_buttons) - 1)].click()
-                        print("BOOKED!")
+                    try:
+                        if book_buttons:
+                            book_buttons[min(self.skip, len(book_buttons) - 1)].click()
+                            print("BOOKED!")
+                    except:
+                        print("OOOPSSS")
 
             
             self.driver.get(COURTS[self.court])
-            print("Time taken:", time.time() - startTime)
-            print("------------")
+            # print("Time taken:", time.time() - startTime)
+            # print("------------")
 
 
 
 if __name__ == '__main__':
     bots = []
-    for i in range(3):
-        bots.append(Bot(2, [], skip = i, back = False))
-        bots.append(Bot(2, [], skip = i, back = False))
-        bots.append(Bot(2, [], skip = i, back = True))
-        bots.append(Bot(2, [], skip = i, back = True))
+    for i in range(4):
+        bots.append(Bot(1, [], skip = i, back = True))
+        bots.append(Bot(1, [], skip = i, back = True))
+        bots.append(Bot(1, [], skip = i, back = True))
+        bots.append(Bot(1, [], skip = i, back = True))
 
 #bots = [Bot(i, []) for i in range(3)]
 
