@@ -1,0 +1,6 @@
+<div class="booking-slot-item" data-slot-number="1" data-participant-id="00000000-0000-0000-0000-000000000000">
+    <div class="booking-slot-item-right booking-slot-action-item">
+        <button class="btn btn-primary" type="button" data-apt-id="649eac2e-9d94-414d-baf0-3ab270dd896d" data-timeslot-id="2b4378ed-967d-40b4-abd0-308f7a1c501b"
+            data-timeslotinstance-id="bbb7fa66-3f4c-4ebe-a170-4edf5c8d63f4" data-slot-number="1" data-slot-text="7 - 7:55 AM"
+            onclick="Reserve(this)">Book Now</button>
+    </div>
